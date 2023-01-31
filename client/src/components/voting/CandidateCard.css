@@ -1,0 +1,79 @@
+.party-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+.party-container {
+  /* display: flex; */
+  background-color: DodgerBlue;
+  width: 30%;
+  margin: 20px auto;
+  border-radius: 20px;
+}
+
+.party-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  /* width: 50%; */
+}
+
+.party-container > .party-icon {
+  border-radius: 50%;
+  display: inline;
+  overflow: hidden;
+  background: transparent;
+}
+
+.party-icon img {
+  width: 30%;
+  padding: 30px;
+
+  border-radius: 50%;
+}
+
+.party-name {
+  display: inline;
+  margin-right: 100px;
+  height: 100px;
+  font-weight: bold;
+  /* border: 1px solid black; */
+  border-radius: 30px;
+}
+
+input[type="radio"] {
+  width: 30px;
+  height: 30px;
+  color: red;
+}
+
+.party-container > button {
+  margin-left: 5rem;
+  padding-inline: 2rem;
+  /* height: 50px; */
+}
+
+.voted-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.voted-card {
+  background-color: #f1f1f1;
+  width: 350px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding-inline: 50px;
+}
+.voted-to {
+  background-color: #f1f1f1;
+  /* width: 350px; */
+  border: 1px solid black;
+  border-radius: 20px;
+  padding-inline: 50px;
+}

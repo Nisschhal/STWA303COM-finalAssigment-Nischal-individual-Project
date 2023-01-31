@@ -1,0 +1,14 @@
+.form {
+  background: linear-gradient(
+    90deg,
+    rgb(3 187 213) 0%,
+    rgba(5, 19, 94, 1) 35%,
+    rgb(3 83 171 / 55%) 74%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 1rem 0;
+  color: white;
+}
