@@ -52,8 +52,8 @@ contract Ballot {
 // --------------------- SET OWNER -------------------//
     constructor(){
         i_electionCommision = msg.sender;
-        votingStartTime = 1674593332;
-        votingEndTime = 1675995187;
+        votingStartTime = 1675027560;
+        votingEndTime = 1675286760;
     }
 
 
@@ -97,12 +97,24 @@ contract Ballot {
                     voteCount: 0,
                     stateCode: candidates[i].stateCode,
                     constituencyCode: candidates[i].constituencyCode
+                    
+
                 });
                 _index++;
             }
         }
         return cc;
     }
+
+
+
+
+
+
+
+
+
+
 
     //// GET CANDIDATE VIA STATE CODE AND CONSTITUENCY CODE ------------------
     /**
@@ -175,6 +187,7 @@ contract Ballot {
 
 //////////////////// --------------------- VOTING -----------------------
 
+
 /**
      * @notice To check the voting process is ongoing
      * @param currentTime_ Current epoch time of the voter
@@ -185,10 +198,12 @@ contract Ballot {
         _;
     }
 
+
+
 /**
      * @notice To check if the voter's age is greater than or equal to 18
-     * @param voterCitizenNo_ number of the current voter
-     * @param candidateCitizenNo_ number of the candidate
+     * @param voterCitizenNo_ Aadhar number of the current voter
+     * @param candidateCitizenNo_ Aadhar number of the candidate
      */
     modifier isEligibleVote(uint256 voterCitizenNo_, uint256 candidateCitizenNo_) {
         // get the voter of given citizenNo.
@@ -205,19 +220,17 @@ contract Ballot {
         _;
     }
 
-    /**
+    
+/**
      * @dev Give your vote to candidate.
      * @param candidateCitizenNo_  Number of the candidate
      * @param voterCitizenNo_ Number of the voter to avoid re-entry
      */
-
-
     function  vote(
         uint256 candidateCitizenNo_,
         uint256 voterCitizenNo_
     )
         public payable
-        areVotingLinesOpen(block.timestamp)
         isEligibleVote(voterCitizenNo_, candidateCitizenNo_)
     {
         // updating the current voter values
@@ -235,6 +248,10 @@ contract Ballot {
             }
         }
     }
+
+
+
+
 //////////////////////// -------------------- CREATE CANDIDATE -----------------------------//
 
      function createCandidate(uint256 candidateCitizenNo,
@@ -261,6 +278,13 @@ contract Ballot {
             addToVoters[msg.sender] = Voter(voterCitizenNo_, voterName_, age_, stateCode_, constituencyCode_, false , true, 0x0000000000000000000);
         }
 
+    
+
+
+
+
+
+
         // GET ALL CANDIDATES
         function getAllCandidates() public view returns(Candidate[] memory) {
             return candidates;
@@ -271,6 +295,8 @@ contract Ballot {
             return voters;
         }
 
+
+
         // GET VOTER VIA CITIZEN NO
         function getVoterIndexViaCitizenNo(uint256 citizenNo_) public view returns(uint256) {
             for (uint256 i = 0; i < voters.length; i++) {
@@ -278,20 +304,21 @@ contract Ballot {
             // so it has to be updated in array only
                 if ((voters[i].voterCitizenNo) ==(citizenNo_)) {
                     return i;
-                    break;
                 }
             }
             revert("No Voter with given Citizen No_");
             
 
         }
+
         // GET VOTER VIA their address and citizenNo
+
         function getVoterViaAddress(address voterAddress_) public view returns(Voter memory) {
             return addToVoters[voterAddress_];
         }
 
         // Login
-        function login(uint256 citizenNo_, address voterAddress_) public view returns(Voter memory) {
+        function login(uint256 citizenNo_,address voterAddress_) public view returns(Voter memory) {
             if ( citizenNo_ == addToVoters[voterAddress_].voterCitizenNo){
                 return addToVoters[voterAddress_];
             } revert("CitizenNo. and Voter Address doesn't match!!");
@@ -306,11 +333,13 @@ contract Ballot {
             // so it has to be updated in array only
                 if ((candidates[i].candidateCitizenNo) ==(citizenNo_)) {
                     return i;
-                    break;
+                    
                 }
             }
             
         }
+
+        
         // GET VOTEcoint via citizen
           function getVoteCount(uint256 citizenNo_) public view returns(uint256)
         {
@@ -320,7 +349,6 @@ contract Ballot {
             // so it has to be updated in array only
                 if ((candidates[i].candidateCitizenNo) ==(citizenNo_)) {
                     return candidates[i].voteCount;
-                    break;
                 }
             }
             
@@ -336,7 +364,6 @@ contract Ballot {
             // so it has to be updated in array only
                     if ((candidates[i].candidateCitizenNo) == (citizenNo_)) {
                         result =  false;
-                        break;
                     }
                 }
 
@@ -361,14 +388,11 @@ contract Ballot {
             _;
         }
 
-
-         // Get winner from the candidates
+    
+        
+        // voted Check 
         function getWinner() public view returns(Candidate memory) {
-
-            Candidate memory highestVotedTo;
-             if (candidates[0].voteCount > 0) {
-                highestVotedTo = candidates[0];
-             }
+            Candidate memory highestVotedTo = candidates[0];
             for (uint256 i = 1; i < candidates.length; i++) {
 
             // we can't iterate via map to find who got most votes,
@@ -381,4 +405,6 @@ contract Ballot {
 
         }
 
+
+        
 }

@@ -35,6 +35,7 @@ const Login = ({ state, account }) => {
         age,
         stateCode,
         constituencyCode,
+        voted,
         isAlive,
         votedTo,
       } = await contract.login(citizen, account[0]);
@@ -46,17 +47,18 @@ const Login = ({ state, account }) => {
         age,
         stateCode,
         constituencyCode,
+        voted,
         isAlive,
         votedTo
       );
       // voterCitizenNo = voterCitizenNo.toString();
       setVoter({
-        ...voter,
         voterCitizenNo,
         voterName,
         age,
         stateCode,
         constituencyCode,
+        voted,
         isAlive,
         votedTo,
         loggedIn: true,

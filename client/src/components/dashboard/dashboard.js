@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import { candidateList } from "../../context/CandidateList";
 const Dashboard = ({ state }) => {
   const { voter, setVoter } = useContext(UserContext);
   const [candidates, setCandidates] = useState([
@@ -71,75 +72,78 @@ const Dashboard = ({ state }) => {
 
       <div className="container" style={{ width: "100%" }} key={Math.random()}>
         <table>
-          <tr>
-            <th
-              style={{
-                backgroundColor: "#96D4D4",
-                border: "1px solid white",
-                borderCollapse: "collapse",
-                padding: "7px",
-                width: "400px",
-              }}
-            >
-              Name
-            </th>
-            <th
-              style={{
-                backgroundColor: "#96D4D4",
-                border: "1px solid white",
-                borderCollapse: "collapse",
-                padding: "7px",
-                width: "400px",
-              }}
-            >
-              PartyName
-            </th>
-            <th
-              style={{
-                backgroundColor: "#96D4D4",
-                border: "1px solid white",
-                borderCollapse: "collapse",
-                padding: "7px",
-                width: "400px",
-              }}
-            >
-              Party Symbol
-            </th>
-            <th
-              style={{
-                backgroundColor: "#96D4D4",
-                border: "1px solid white",
-                borderCollapse: "collapse",
-                padding: "7px",
-                width: "400px",
-              }}
-            >
-              State No.
-            </th>
-            <th
-              style={{
-                backgroundColor: "#96D4D4",
-                border: "1px solid white",
-                borderCollapse: "collapse",
-                padding: "7px",
-                width: "400px",
-              }}
-            >
-              Constituency No.
-            </th>
+          <thead>
+            <tr>
+              <th
+                style={{
+                  backgroundColor: "#96D4D4",
+                  border: "1px solid white",
+                  borderCollapse: "collapse",
+                  padding: "7px",
+                  width: "400px",
+                }}
+              >
+                Name
+              </th>
+              <th
+                style={{
+                  backgroundColor: "#96D4D4",
+                  border: "1px solid white",
+                  borderCollapse: "collapse",
+                  padding: "7px",
+                  width: "400px",
+                }}
+              >
+                PartyName
+              </th>
+              <th
+                style={{
+                  backgroundColor: "#96D4D4",
+                  border: "1px solid white",
+                  borderCollapse: "collapse",
+                  padding: "7px",
+                  width: "400px",
+                }}
+              >
+                Party Symbol
+              </th>
+              <th
+                style={{
+                  backgroundColor: "#96D4D4",
+                  border: "1px solid white",
+                  borderCollapse: "collapse",
+                  padding: "7px",
+                  width: "400px",
+                }}
+              >
+                State No.
+              </th>
+              <th
+                style={{
+                  backgroundColor: "#96D4D4",
+                  border: "1px solid white",
+                  borderCollapse: "collapse",
+                  padding: "7px",
+                  width: "400px",
+                }}
+              >
+                Constituency No.
+              </th>
 
-            <th
-              style={{
-                backgroundColor: "#96D4D4",
-                border: "1px solid white",
-                borderCollapse: "collapse",
-                padding: "7px",
-                width: "400px",
-              }}
-            >
-              Total Vote
-            </th>
-          </tr>
+              <th
+                style={{
+                  backgroundColor: "#96D4D4",
+                  border: "1px solid white",
+                  borderCollapse: "collapse",
+                  padding: "7px",
+                  width: "400px",
+                }}
+              >
+                Total Vote
+              </th>
+            </tr>
+          </thead>
+
           {candidates.map((candidate) => (
             <tr>
               <td
@@ -211,7 +215,7 @@ const Dashboard = ({ state }) => {
                   width: "50px",
                 }}
               >
-                {candidate.voteCount}
+                {candidate.voteCount.toString()}
               </td>
             </tr>
           ))}

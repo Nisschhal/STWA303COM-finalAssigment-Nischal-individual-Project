@@ -1,6 +1,6 @@
-import { ethers } from "ethers";
 import { useState } from "react";
-const NewVoter = ({ state }) => {
+import { voterList } from "../../context/VoterList";
+const NewVoter = ({ state, account }) => {
   const { contract } = state;
   const defaultVoter = {
     citizen: "",
@@ -27,7 +27,7 @@ const NewVoter = ({ state }) => {
     const state = document.querySelector("#state").value;
     const consituency = document.querySelector("#constituency").value;
 
-    console.log(citizen, name, age, state, consituency, contract);
+    console.log(citizen, name, age, state, consituency, account);
     // const amount = { value: ethers.utils.parseEther("0.001") };
     const transaction = await contract.createVoter(
       citizen,
@@ -37,8 +37,23 @@ const NewVoter = ({ state }) => {
       consituency
     );
     await transaction.wait();
+    // setTimeout(() => {
+    //   voterList.push({
+    //     address: account,
+    //     voterCitizenNo: citizen, // voter unique ID
+    //     voterName: name,
+    //     age: age,
+    //     stateCode: state,
+    //     constituencyCode: consituency,
+    //     voted: false,
+    //     isAlive: true,
+    //     votedTo: "", // ci
+    //   });
+    // }, 3000);
+
     alert("Voter has been created Successfully!!");
     setVoterForm(defaultVoter);
+    console.log(voterList);
   };
   return (
     <>

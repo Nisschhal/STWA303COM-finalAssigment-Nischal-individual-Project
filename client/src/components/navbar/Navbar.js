@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { UserContext } from "../../context/UserContext";
 
 export const Navbar = ({ state, account }) => {
   const { contract } = state;
-
+  const [owner, setOwner] = useState(null);
   const { voter, setVoter } = useContext(UserContext);
+
   return (
     <div className="nav">
       <div className="navbar-container">
@@ -22,12 +23,16 @@ export const Navbar = ({ state, account }) => {
         <div className="spacer"></div>
         <div className="navbar">
           <ul>
-            <Link to="/voters" className="navbar-item">
-              Voters
-            </Link>
-            <Link to="/candidates" className="navbar-item">
-              Candidates
-            </Link>
+            {account == "0xbc8cfcfeb9c0b07dc01e8fed2a2b2207afa46832" && (
+              <>
+                <Link to="/voters" className="navbar-item">
+                  Voters
+                </Link>
+                <Link to="/candidates" className="navbar-item">
+                  Candidates
+                </Link>
+              </>
+            )}
             <Link to="/voting" className="navbar-item">
               Voting
             </Link>

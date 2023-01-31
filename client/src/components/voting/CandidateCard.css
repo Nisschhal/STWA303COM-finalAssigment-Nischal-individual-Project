@@ -1,79 +1,48 @@
 .party-group {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  height: 100vh;
+}
+.party-icon {
+  border-radius: 50%;
+}
+.party-icon > img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 10px;
 }
 .party-container {
-  /* display: flex; */
-  background-color: DodgerBlue;
-  width: 30%;
-  margin: 20px auto;
-  border-radius: 20px;
-}
-
-.party-container > div {
-  background-color: #f1f1f1;
-  margin: 10px;
-  padding: 20px;
-  font-size: 30px;
-  /* width: 50%; */
-}
-
-.party-container > .party-icon {
-  border-radius: 50%;
-  display: inline;
-  overflow: hidden;
-  background: transparent;
-}
-
-.party-icon img {
-  width: 30%;
-  padding: 30px;
-
-  border-radius: 50%;
-}
-
-.party-name {
-  display: inline;
-  margin-right: 100px;
-  height: 100px;
-  font-weight: bold;
-  /* border: 1px solid black; */
-  border-radius: 30px;
-}
-
-input[type="radio"] {
-  width: 30px;
-  height: 30px;
-  color: red;
-}
-
-.party-container > button {
-  margin-left: 5rem;
-  padding-inline: 2rem;
-  /* height: 50px; */
-}
-
-.voted-container {
   display: flex;
-  height: 100vh;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  width: 451px;
+  border: 1px solid black;
+  height: 128px;
+  border-radius: 20px;
+  background-color: rgba(134, 134, 134, 0.253);
+
+  padding: 10px;
 }
 
-.voted-card {
-  background-color: #f1f1f1;
-  width: 350px;
+.party-info {
   border: 1px solid black;
+  width: 200px;
+  padding: 10px;
+  margin-right: 20px;
   border-radius: 20px;
-  padding-inline: 50px;
+
+  background: #10ffb4;
+  border-radius: 13px;
 }
-.voted-to {
-  background-color: #f1f1f1;
-  /* width: 350px; */
-  border: 1px solid black;
-  border-radius: 20px;
-  padding-inline: 50px;
+
+.party-info > .party-name {
+  color: rgba(0, 0, 0, 0.46);
+  padding: 5px 0;
+}
+
+.vote {
+  width: 59.06px;
+  height: 44.1px;
+
+  background: #055797;
+  border-radius: 13px;
 }

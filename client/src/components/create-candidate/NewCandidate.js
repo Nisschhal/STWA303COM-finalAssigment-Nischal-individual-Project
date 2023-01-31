@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 import { useState } from "react";
+import { candidateList } from "../../context/CandidateList";
 const NewCandidate = ({ state }) => {
   const { contract } = state;
   const defaultCandidate = {
@@ -38,6 +39,19 @@ const NewCandidate = ({ state }) => {
       constituency
     );
     await transaction.wait();
+
+    // setTimeout(() => {
+    //   candidateList.push({
+    //     candidateCitizenNo: citizen,
+    //     candidateName: name,
+    //     partyName: partyName,
+    //     partyFlag: partySymbol,
+    //     stateCode: state,
+    //     constituencyCode: constituency,
+    //     voteCount: 0,
+    //   });
+    // }, 3000);
+
     alert("Candidate Has been created Successfully!");
     setCandidateForm(defaultCandidate);
   };

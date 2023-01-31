@@ -7,7 +7,10 @@ module.exports = {
   solidity: "0.8.17",
 
   networks: {
-    hardhat: {},
+    hardhat: {
+      gas: 2100000,
+      gasPrice: 8000000000,
+    },
     goerli: {
       url: process.env.GOERLI_RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
